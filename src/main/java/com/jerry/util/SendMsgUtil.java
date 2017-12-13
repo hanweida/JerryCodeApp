@@ -1,8 +1,6 @@
 package com.jerry.util;
 
-import com.easou.union.util.HttpClientUtil;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedHashMap;
@@ -10,7 +8,6 @@ import java.util.Map;
 
 public class SendMsgUtil {
 	
-	private static Logger logger = LogWriter.getSecurityLog();
 
 	
 	/**
@@ -24,7 +21,7 @@ public class SendMsgUtil {
 	 */
 	public static boolean sendSmsMsg(String msg, String mobile) throws UnsupportedEncodingException {
 		boolean success = false;
-		HttpClientUtil httpClientUtil = new HttpClientUtil(logger);
+		HttpClientUtil httpClientUtil = new HttpClientUtil();
 		Map<String, String> dataMap = new LinkedHashMap<String, String>();
 		String url = "http://10.26.27.100:8667/api/send";
 		dataMap.put("username", "ecom");
@@ -49,7 +46,7 @@ public class SendMsgUtil {
 	 */
 	public static boolean sendSmsMsgByPhoneNum(String msg, String mobile) throws UnsupportedEncodingException {
 		boolean success = false;
-		HttpClientUtil httpClientUtil = new HttpClientUtil(logger);
+		HttpClientUtil httpClientUtil = new HttpClientUtil();
 		Map<String, String> dataMap = new LinkedHashMap<String, String>();
 		String url = "http://10.26.27.100:8666/";
 		dataMap.put("PhoneNumber", mobile);

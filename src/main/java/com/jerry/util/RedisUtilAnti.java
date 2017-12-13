@@ -1,6 +1,5 @@
 package com.jerry.util;
 
-import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
@@ -21,8 +20,7 @@ import java.util.Set;
  */
 public class RedisUtilAnti{
 	
-	private static Logger errorLog = LogWriter.getErrLog();
-	
+
 	private static String SYSTEM_CONFIG_FILE = "application.properties";
 	/**
      * 非切片客户端链接
@@ -47,7 +45,6 @@ public class RedisUtilAnti{
 			props.load(is);
 			initialPool(props);
 		} catch (Exception e) {
-			errorLog.error("Not find application.properties",e);
 		} finally {
 			if (null != is ) {
 				try {
@@ -185,7 +182,6 @@ public class RedisUtilAnti{
 	/**
 	 * 反回字节类型数据
 	 * @param key
-	 * @param value
 	 * @return String
 	 */
 	public static byte[] getByte(String key) {
