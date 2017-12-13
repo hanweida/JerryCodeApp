@@ -177,6 +177,9 @@ public class DateTool {
 		return null;
 	}
     public static void main(String[] args){
-    	System.out.println(getLongTime());
+    	System.out.println(getDateLongByPattern(1512110779367l));
+		//2017-12-01 11:14:40
+		//2017-12-01 11:14:51
+		//2017-12-01 11:15:02
     }
 }
