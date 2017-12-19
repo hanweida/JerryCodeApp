@@ -11,8 +11,15 @@ import com.google.gson.annotations.SerializedName;
  * To change this template use File | Settings | File Templates.
  */
 public class UserPojo {
+    public UserPojo() {
+    }
+
     public UserPojo(String name, int age) {
         this.name = name;
+        this.age = age;
+    }
+
+    public UserPojo(int age) {
         this.age = age;
     }
 
