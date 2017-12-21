@@ -61,17 +61,29 @@ public class GsonDemo3 {
      *   typeAdatper 适配器
      */
     public void jsonAdatper(){
+        JsonParser jsonParser = new JsonParser();
+
         Gson gson = new GsonBuilder().registerTypeAdapter(UserPojo.class,new JsonSerializer<UserPojo>() {
             @Override
             public JsonElement serialize(UserPojo userPojo, Type type, JsonSerializationContext jsonSerializationContext) {
-
-                return null;  //To change body of implemented methods use File | Settings | File Templates.
+                if("writeJson".equals(userPojo.name)){
+                    userPojo.name = "serializeJson";
+                }
+                return jsonSerializationContext.serialize(userPojo);  //To change body of implemented methods use File | Settings | File Templates.
             }
         }
         ).create();
 
-        UserPojo userPojo = gson.fromJson(jsonStr, UserPojo.class);
-        System.out.println("反序列化："+userPojo.toString());
+        Gson gson2 = new GsonBuilder().registerTypeAdapter(UserPojo.class, new JsonDeserializer<UserPojo>() {
+                    @Override
+                    public UserPojo deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+                        return null;
+                    }
+                }
+        ).create();
+
+        //UserPojo userPojo = gson.fromJson(jsonStr, UserPojo.class);
+        //System.out.println("反序列化："+userPojo.toString());
         System.out.println("--------------");
         UserPojo userPojo1 = new UserPojo("writeJson", 30);
         System.out.println("序列化："+gson.toJson(userPojo1));
@@ -79,7 +91,8 @@ public class GsonDemo3 {
 
     public static void main(String[] args) {
         GsonDemo3 gsonDemo3 = new GsonDemo3();
-        gsonDemo3.typeAdatper();
+        //gsonDemo3.typeAdatper();
+        gsonDemo3.jsonAdatper();
 
     }
 }
