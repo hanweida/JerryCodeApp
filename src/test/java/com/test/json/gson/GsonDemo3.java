@@ -1,11 +1,15 @@
 package com.test.json.gson;
 
 import com.google.gson.*;
+import com.google.gson.internal.ConstructorConstructor;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.Map;
 
 /**
  * TypeAdapter、JsonDeserializer、JsonDeserializer、registerTypeAdatper、registerTypeHierarchyAdapter
@@ -89,10 +93,45 @@ public class GsonDemo3 {
         System.out.println("序列化："+gson.toJson(userPojo1));
     }
 
+    /**
+     * 由于TypeAdapter<String> 这种可以覆盖Gson里面的默认的 TypeAdapter<String>，但是有一些是Adapter 无法重写，类似于数组，所以需要AdapterFactory
+     * @author:ES-BF-IT-126 
+     * @method: 
+     * @date:Date 2017/12/21
+     * @params:
+     * @returns:
+     */
+    public void jsonAdapterFactory(){
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        try {
+            Class builder = (Class) gsonBuilder.getClass();
+            Field f = builder.getDeclaredField("instanceCreators");
+            f.setAccessible(true);
+            Map<Type, InstanceCreator<?>> val = null;//得到此属性的值
+            try {
+                val = (Map<Type, InstanceCreator<?>>) f.get(gsonBuilder);
+                gsonBuilder.registerTypeAdapterFactory(new CollectionTypeAdapterFactory(new ConstructorConstructor(val)));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            //注册数组的处理器
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public static void main(String[] args) {
         GsonDemo3 gsonDemo3 = new GsonDemo3();
         //gsonDemo3.typeAdatper();
-        gsonDemo3.jsonAdatper();
+        //gsonDemo3.jsonAdatper();
+        gsonDemo3.jsonAdapterFactory();
 
     }
+
+
 }
+
+
+
+
