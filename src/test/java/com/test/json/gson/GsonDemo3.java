@@ -26,7 +26,7 @@ public class GsonDemo3 {
      *   typeAdatper 适配器
      */
     public void typeAdatper(){
-        Gson gson = new GsonBuilder().registerTypeAdapter(UserPojo.class, new TypeAdapter<UserPojo>() {
+        Gson gson = new GsonBuilder().registerTypeHierarchyAdapter(UserPojo.class, new TypeAdapter<UserPojo>() {
             @Override
             public void write(JsonWriter jsonWriter, UserPojo userPojo) throws IOException {
                 jsonWriter.beginObject();
@@ -72,8 +72,10 @@ public class GsonDemo3 {
             public JsonElement serialize(UserPojo userPojo, Type type, JsonSerializationContext jsonSerializationContext) {
                 if("writeJson".equals(userPojo.name)){
                     userPojo.name = "serializeJson";
+                    return jsonSerializationContext.serialize(userPojo);
+                } else {
+                    return new Gson().toJsonTree(userPojo);
                 }
-                return jsonSerializationContext.serialize(userPojo);  //To change body of implemented methods use File | Settings | File Templates.
             }
         }
         ).create();
@@ -86,46 +88,46 @@ public class GsonDemo3 {
                 }
         ).create();
 
-        //UserPojo userPojo = gson.fromJson(jsonStr, UserPojo.class);
-        //System.out.println("反序列化："+userPojo.toString());
+        UserPojo userPojo = gson2.fromJson(jsonStr, UserPojo.class);
+        System.out.println("反序列化："+userPojo.toString());
         System.out.println("--------------");
         UserPojo userPojo1 = new UserPojo("writeJson", 30);
         System.out.println("序列化："+gson.toJson(userPojo1));
     }
 
-    /**
-     * 由于TypeAdapter<String> 这种可以覆盖Gson里面的默认的 TypeAdapter<String>，但是有一些是Adapter 无法重写，类似于数组，所以需要AdapterFactory
-     * @author:ES-BF-IT-126 
-     * @method: 
-     * @date:Date 2017/12/21
-     * @params:
-     * @returns:
-     */
-    public void jsonAdapterFactory(){
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        try {
-            Class builder = (Class) gsonBuilder.getClass();
-            Field f = builder.getDeclaredField("instanceCreators");
-            f.setAccessible(true);
-            Map<Type, InstanceCreator<?>> val = null;//得到此属性的值
+        /**
+         * 由于TypeAdapter<String> 这种可以覆盖Gson里面的默认的 TypeAdapter<String>，但是有一些是Adapter 无法重写，类似于数组，所以需要AdapterFactory
+         * @author:ES-BF-IT-126
+         * @method:
+         * @date:Date 2017/12/21
+         * @params:
+         * @returns:
+         */
+        public void jsonAdapterFactory(){
+            GsonBuilder gsonBuilder = new GsonBuilder();
             try {
-                val = (Map<Type, InstanceCreator<?>>) f.get(gsonBuilder);
-                gsonBuilder.registerTypeAdapterFactory(new CollectionTypeAdapterFactory(new ConstructorConstructor(val)));
-            } catch (IllegalAccessException e) {
+                Class builder = (Class) gsonBuilder.getClass();
+                Field f = builder.getDeclaredField("instanceCreators");
+                f.setAccessible(true);
+                Map<Type, InstanceCreator<?>> val = null;//得到此属性的值
+                try {
+                    val = (Map<Type, InstanceCreator<?>>) f.get(gsonBuilder);
+                    gsonBuilder.registerTypeAdapterFactory(new CollectionTypeAdapterFactory(new ConstructorConstructor(val)));
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                //注册数组的处理器
+            } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             }
-            //注册数组的处理器
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
         }
-    }
 
 
     public static void main(String[] args) {
         GsonDemo3 gsonDemo3 = new GsonDemo3();
         //gsonDemo3.typeAdatper();
-        //gsonDemo3.jsonAdatper();
-        gsonDemo3.jsonAdapterFactory();
+        gsonDemo3.jsonAdatper();
+        //gsonDemo3.jsonAdapterFactory();
 
     }
 
