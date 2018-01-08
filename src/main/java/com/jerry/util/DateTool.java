@@ -40,7 +40,7 @@ public class DateTool {
 	
 	/**
 	 * 日期转换
-	 * @param date (getTime())
+	 * @param
 	 * @return String
 	 */
 	public static String getDateLongByPattern(long _date) {
@@ -177,7 +177,7 @@ public class DateTool {
 		return null;
 	}
     public static void main(String[] args){
-    	System.out.println(getDateLongByPattern(1512110779367l));
+    	System.out.println(getDateLongByPattern(1515121144414l));
 		//2017-12-01 11:14:40
 		//2017-12-01 11:14:51
 		//2017-12-01 11:15:02
