@@ -14,7 +14,7 @@ public class RecursionDemo {
     @Test
     public void testRecursion(){
         //System.out.println(f(11));
-        System.out.println(f2(1000));
+        System.out.println(f2(10000));
     }
 
     int f(int i){
