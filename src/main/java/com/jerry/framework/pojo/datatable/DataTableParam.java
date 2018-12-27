@@ -15,11 +15,11 @@ import java.util.Map;
  * @Create In 2015-3-24
  */
 public class DataTableParam {
-	
+
 	private Integer pageNo;
 	private Integer pageSize;
-	private String orderBy;	//默认排序字段
-	private Integer echo;	//控件查询次数，js控制自增
+	private String orderBy;    //默认排序字段
+	private Integer echo;    //控件查询次数，js控制自增
 	private Boolean isAsc; //是否升序
 	private HashMap<String, String> paramMap; //所有参数
 	

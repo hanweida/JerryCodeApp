@@ -5,7 +5,7 @@ import com.google.gson.annotations.Expose;
 /**
  * Created by ES-BF-IT-126 on 2017/12/19.
  */
-public class ExposePojo {
+public class ExposePojo {   
     @Expose
     private String privateString = "private";
     @Expose
