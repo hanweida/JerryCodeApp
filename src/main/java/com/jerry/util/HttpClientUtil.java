@@ -169,7 +169,8 @@ public class HttpClientUtil {
 			httpClient.getParams().setSoTimeout(0);
 			httpClient.getParams().setCookiePolicy(CookiePolicy.IGNORE_COOKIES);
 			httpClient.getParams().setContentCharset("utf-8");
-			List<Header> headers = new ArrayList<Header>();
+		   httpClient.getHostConfiguration().setProxy("localhost", 8888);
+			 List<Header> headers = new ArrayList<Header>();
 			httpClient.getHostConfiguration().getParams().setParameter("http.default-headers", headers);
 			int code = httpClient.executeMethod(getMethod);
 			writeLog("code:" + code + ",url:" + url + ",data:" + dataMap,null);
@@ -226,4 +227,40 @@ public class HttpClientUtil {
         return text;
     }
 
+
+
+	public String sendDataGetHttps(String url, Map<String,String> dataMap){
+		GetMethod getMethod = null;
+		String text = "";
+		try{
+			url = initGetData(url, dataMap);
+			getMethod = new GetMethod(url);
+			HttpClient httpClient;
+			MultiThreadedHttpConnectionManager defaultManager = new MultiThreadedHttpConnectionManager();
+			httpClient = new org.apache.commons.httpclient.HttpClient(defaultManager);
+			HttpConnectionManagerParams params = defaultManager.getParams();
+			params.setMaxTotalConnections(10000);
+			params.setConnectionTimeout(0);
+			params.setSoTimeout(0);
+			httpClient.getParams().setConnectionManagerTimeout(0);
+			httpClient.getParams().setSoTimeout(0);
+			httpClient.getParams().setCookiePolicy(CookiePolicy.IGNORE_COOKIES);
+			httpClient.getParams().setContentCharset("utf-8");
+			httpClient.getHostConfiguration().setProxy("localhost", 8888);
+			List<Header> headers = new ArrayList<Header>();
+			httpClient.getHostConfiguration().getParams().setParameter("http.default-headers", headers);
+			int code = httpClient.executeMethod(getMethod);
+			writeLog("code:" + code + ",url:" + url + ",data:" + dataMap,null);
+			text = getMethod.getResponseBodyAsString();
+			writeLog("text:" + text,null);
+		}
+		catch(Exception e){
+			writeLog("sendData error",e);
+		}finally{
+			if (getMethod != null) {
+				getMethod.releaseConnection();
+			}
+		}
+		return text;
+	}
 }
