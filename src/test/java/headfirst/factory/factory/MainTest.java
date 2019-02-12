@@ -10,7 +10,13 @@ import org.junit.Test;
 public class MainTest {
     @Test
     public void test(){
-        //BikeFactory bikeFactory = new FeiGeBikeFactory();
-        //Bike bike = bikeFactory.createBike();
+        BikeFactory bikeFactory = new FeiGeFactory();
+        Bike bike = bikeFactory.createBike();
+        bike.ride();
+
+        BikeFactory bikeFactory1 = new FengHuangFactory();
+        Bike bike1 = bikeFactory1.createBike();
+        bike1.ride();
+
     }
 }
