@@ -208,6 +208,16 @@
       <version>2.0.0</version>
     </dependency>
 
+      <dependency>
+          <groupId>org.apache.poi</groupId>
+          <artifactId>poi-ooxml</artifactId>
+          <version>3.6</version>
+      </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml-schemas</artifactId>
+      <version>3.6</version>
+    </dependency>
       <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
       <dependency>
           <groupId>com.google.code.gson</groupId>
