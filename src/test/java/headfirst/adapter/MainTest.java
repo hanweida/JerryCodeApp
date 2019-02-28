@@ -41,8 +41,8 @@ public class MainTest {
     @Test
     public void interfaceAdapterTest(){
         //实现子类
-        Adapter5V adapter5V = new Adapter5V(new Source220V());
-        System.out.println(adapter5V.output5V());
+        //Adapter5V adapter5V = new Adapter5V(new Source220V());
+        //System.out.println(adapter5V.output5V());
 
         //直接实现子类
         InterfaceAdapter adapter5V1 = new InterfaceAdapter(new Source220V()){
