@@ -1,4 +1,4 @@
-package testnomal;
+package test;
 
 import java.util.Queue;
 
