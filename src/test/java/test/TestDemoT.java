@@ -1,4 +1,4 @@
-package testnomal;
+package test;
 
 import com.jerry.javase.fanxing.DemoT;
 import org.junit.Test;
