@@ -31,7 +31,11 @@ public class ProxyFactory implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        Object returnValue = method.invoke(target, objects);
-        return null;
+        if(method.getName().equals("film")){
+            o = method.invoke(target, objects);
+        }  else {
+            System.out.println("代理都完成了");
+        }
+        return o;
     }
 }

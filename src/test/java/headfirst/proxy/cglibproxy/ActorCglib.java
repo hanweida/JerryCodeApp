@@ -3,11 +3,11 @@ package headfirst.proxy.cglibproxy;
 //被代理类：（演员）
 public class ActorCglib {
     public void talk() {
-        System.out.println("代理人谈判");
+        System.out.println("演员亲自完成谈判");
     }
 
     public void order() {
-        System.out.println("代理人谈判");
+        System.out.println("演员亲自完成谈判");
     }
 
     public void film() {
@@ -15,6 +15,6 @@ public class ActorCglib {
     }
 
     public void checkout() {
-        System.out.println("代理人谈判");
+        System.out.println("演员亲自完成谈判");
     }
 }

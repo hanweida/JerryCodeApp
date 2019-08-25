@@ -23,7 +23,7 @@ public class MainTest {
 //        agent.checkout();
 //        //动态代理
 //        ActorHandle actorHandle = new ActorHandle(new Actors());
-//        Subjects subject = (Subjects) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Subjects.class}, actorHandle);
+//       Subjects subject = (Subjects) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(), new Class[]{Subjects.class}, actorHandle);
 //        subject.talk();
 //        subject.order();
 //        subject.film();
