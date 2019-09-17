@@ -5,7 +5,7 @@
 
 <generatorConfiguration>
     <!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
-    <classPathEntry location="D:/softwarework/jars/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
+    <classPathEntry location="C:/softwarework/jars/mysql/mysql-connector-java/8.0.15/mysql-connector-java-8.0.15.jar" />
 
     <context id="wangyongzhi_mysql_tables" targetRuntime="MyBatis3">
         <!-- 防止生成的代码中有很多注释，加入下面的配置控制 -->
@@ -16,9 +16,9 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://223.99.226.156:3306/new_media_admin"
-                        userId="ecom"
-                        password="easouecom">
+                        connectionURL="jdbc:mysql://10.26.27.108:3336/new_media_remind"
+                        userId="ecom@nwad"
+                        password="eCom!@3">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -26,23 +26,23 @@
         </javaTypeResolver>
 
         <!-- 数据表对应的model层  -->
-        <javaModelGenerator targetPackage="com.jerry.pojo" targetProject="src">
+        <javaModelGenerator targetPackage="com.easou.ecom.newmediaremind.remind.domain" targetProject="src">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
         <!-- sql mapper 映射配置文件 -->
-        <sqlMapGenerator targetPackage="com.jerry.dao"  targetProject="src">
+        <sqlMapGenerator targetPackage="com.easou.ecom.newmediaremind.remind.dao"  targetProject="src">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- mybatis3中的mapper接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jerry.dao"  targetProject="src">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.easou.ecom.newmediaremind.remind.dao"  targetProject="src">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="new_media_admin" tableName="t_test" domainObjectName="UserTest"
+        <table schema="new_media_remind" tableName="t_unpay_order" domainObjectName="UnpayOrder"
                >
         </table>
 
