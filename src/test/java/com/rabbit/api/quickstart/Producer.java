@@ -13,7 +13,7 @@ public class Producer {
     public void produce() throws IOException, TimeoutException {
         //1 创建一个ConnectionFactory, 并进行配置
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("192.168.100.153");
+        connectionFactory.setHost("192.168.125.41");
         connectionFactory.setPort(5672);
         connectionFactory.setVirtualHost("/");
 
@@ -25,8 +25,9 @@ public class Producer {
 
         //4 通过Channel发送数据
         for(int i=0; i < 5; i++){
-            String msg = "Hello RabbitMQ!";
+            String msg = "Hello RabbitMQ! Default Exchange！";
             //1 exchange   2 routingKey
+            //String exchange, String routingKey, BasicProperties props, byte[] body
             channel.basicPublish("", "test001", null, msg.getBytes());
         }
 
