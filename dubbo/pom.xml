@@ -13,7 +13,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     
-    <groupId>com.jerry</groupId>
+    <groupId>com.com.jerry</groupId>
     <artifactId>dubbo-parent</artifactId>
     <version>${revision}</version>
     <name>dubbo</name>
@@ -23,9 +23,27 @@
     <properties>
         <java.version>1.8</java.version>
         <revision>1.0</revision>
+        <dubbo.version>2.7.4</dubbo.version>
     </properties>
 
+<!--    dependencyManagement定义version版本号，子项目就不用填写版本号，而向上查找版本号-->
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.dubbo</groupId>-->
+<!--                <artifactId>dubbo</artifactId>-->
+<!--                <version>${dubbo.version}</version>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+
     <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
