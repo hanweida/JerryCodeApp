@@ -16,9 +16,9 @@
 
         <!-- 数据库连接 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://119.167.217.163:3306/activity_platform_web"
-                        userId="ecom"
-                        password="easouecom">
+                        connectionURL="jdbc:mysql://10.26.30.111:3306/activity_platform_web"
+                        userId="action"
+                        password="easouaction">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -42,7 +42,7 @@
         </javaClientGenerator>
 
         <!-- 数据表进行生成操作 schema:相当于库名; tableName:表名; domainObjectName:对应的DO -->
-        <table schema="activity_platform_web" tableName="t_game_stat" domainObjectName="GameStat"
+        <table schema="activity_platform_web" tableName="t_game_material" domainObjectName="GameMaterial"
                >
         </table>
 
