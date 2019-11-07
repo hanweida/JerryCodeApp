@@ -13,7 +13,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     
-    <groupId>com.com.jerry</groupId>
+    <groupId>com.jerry</groupId>
     <artifactId>dubbo-parent</artifactId>
     <version>${revision}</version>
     <name>dubbo</name>
@@ -23,7 +23,7 @@
     <properties>
         <java.version>1.8</java.version>
         <revision>1.0</revision>
-        <dubbo.version>2.7.4</dubbo.version>
+        <dubbo.version>2.7.0</dubbo.version>
     </properties>
 
 <!--    dependencyManagement定义version版本号，子项目就不用填写版本号，而向上查找版本号-->
@@ -43,6 +43,32 @@
             <artifactId>dubbo</artifactId>
             <version>${dubbo.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-client -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-client</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.curator/curator-recipes -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

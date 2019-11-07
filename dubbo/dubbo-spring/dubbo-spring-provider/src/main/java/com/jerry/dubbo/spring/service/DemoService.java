@@ -1,4 +1,4 @@
-package com.jerry.dubbo.spring.provider;
+package com.jerry.dubbo.spring.service;
 
 public interface DemoService {
     String sayHello(String name);

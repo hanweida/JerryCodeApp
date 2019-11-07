@@ -1,4 +1,5 @@
 package com.jerry.servlet;
 
-public interface Invoke {
+public @interface Invoke {
+    int a() default 1;
 }
