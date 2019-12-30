@@ -168,7 +168,7 @@ public class AESMain {
 
 	public static void main(String[] args) throws Exception {
 
-		String message = "This is just an example";
+		String message = "测试中文加密";
 
 		// Get the KeyGenerator
 		KeyGenerator kgen = KeyGenerator.getInstance("AES");
