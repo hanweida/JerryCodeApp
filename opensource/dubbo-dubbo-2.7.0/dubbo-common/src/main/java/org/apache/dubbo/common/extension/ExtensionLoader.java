@@ -272,7 +272,7 @@ public class ExtensionLoader<T> {
         }
         for (String key : keys) {
             for (Map.Entry<String, String> entry : url.getParameters().entrySet()) {
-                String k = entry.getKey();
+                String k = entry.getKey();                                                
                 String v = entry.getValue();
                 if ((k.equals(key) || k.endsWith("." + key))
                         && ConfigUtils.isNotEmpty(v)) {
@@ -285,7 +285,7 @@ public class ExtensionLoader<T> {
 
     /**
      * Get extension's instance. Return <code>null</code> if extension is not found or is not initialized. Pls. note
-     * that this method will not trigger extension load.
+     * that this method will not trigger extension load.                                                
      * <p>
      * In order to trigger extension load, call {@link #getExtension(String)} instead.
      *

@@ -74,4 +74,12 @@ public class BizDataEncrypt {
         return AESBase64.encrypt(str, DIRECT_LOGIN_KEY, DIRECT_LOGIN_KEY);
     }
 
+    public static void main(String[] args) {
+        String encrypt = encryptChargingSystemData("通信系统加密");
+        System.out.println("encrypt: " +  encrypt);
+
+        String deEntry = deEncryptChargingSystemData(encrypt);
+        System.out.println("deEntry:" + deEntry);
+    }
+
 }

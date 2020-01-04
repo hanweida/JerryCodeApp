@@ -117,7 +117,7 @@ public class DESUtil {
 		
 	 public static void main(String[] args) {
 		 try {  
-				 String test = "3bbfead3c474c6c442daa1d9d1685c16";
+				 String test = "大幅度发的";
 				 DESUtil des = new DESUtil("roger123");//默认密钥    
 				 String encrypt = des.encrypt(test);
 				 System.out.println(System.getProperty("file.encoding"));
