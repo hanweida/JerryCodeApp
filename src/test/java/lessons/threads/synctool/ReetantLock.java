@@ -1,6 +1,5 @@
 package lessons.threads.synctool;
 
-import org.apache.poi.hssf.record.formula.functions.T;
 import org.junit.Test;
 
 import java.util.concurrent.locks.LockSupport;
