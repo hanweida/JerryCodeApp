@@ -136,8 +136,8 @@ public class HttpClientUtil {
 		//设置登陆时要求的信息，一般就用户名和密码，验证码自己处理了       
 		NameValuePair[] data = initPostData(dataMap);
 		postMethod.setRequestBody(data);   
-		postMethod.setRequestHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36");               
-		try {             
+		postMethod.setRequestHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36");
+		try {
 			//设置 HttpClient 接收 Cookie,用与浏览器一样的策略            
 			httpClient.getParams().setCookiePolicy(CookiePolicy.BROWSER_COMPATIBILITY);             
 			httpClient.executeMethod(postMethod);   
