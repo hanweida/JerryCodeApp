@@ -2,6 +2,7 @@ package thread.concurrent.lock.readwritelock;
 
 import org.junit.Test;
 
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 
@@ -75,5 +76,11 @@ public class ReentrantReadWriteLockDemo {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+  }
+
+  @Test
+  public void demo2(){
+    ReentrantLock reentrantLock = new ReentrantLock();
+    reentrantLock.lock();
   }
 }
