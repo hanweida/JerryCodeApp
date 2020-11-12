@@ -31,7 +31,7 @@ public class MainTest {
 //        //cglib代理
         ActorCglib actorCglib = new ActorCglib();
         //代理对象
-        ActorCglib proxy = (ActorCglib) new ProxyFactory(actorCglib).getProxyInstance();
+        ActorCglib proxy = (ActorCglib) new ProxyFactory().getProxyInstance(actorCglib);
         proxy.talk();
         proxy.order();
         proxy.film();
