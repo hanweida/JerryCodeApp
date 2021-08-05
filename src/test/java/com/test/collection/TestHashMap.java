@@ -8,7 +8,7 @@ import java.util.Objects;
 public class TestHashMap {
     @Test
     public void testHash(){
-        HashMap<Student, Integer> stu = new HashMap<Student, Integer>(3);
+        HashMap<Student, Integer> stu = new HashMap<Student, Integer>(1);
         Student student = new Student();
         student.setNo(1);
         student.setName("a");
@@ -29,8 +29,20 @@ public class TestHashMap {
         student4.setName("b");
         stu.put(student4, 4);
 
+        Student student5 = new Student();
+        student5.setNo(5);
+        student5.setName("b");
+        stu.put(student5, 5);
 
+        Student student6 = new Student();
+        student6.setNo(6);
+        student6.setName("b");
+        stu.put(student6, 6);
 
+        Student student7 = new Student();
+        student7.setNo(7);
+        student7.setName("b");
+        stu.put(student7, 7);
     }
 }
 
