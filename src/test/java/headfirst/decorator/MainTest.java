@@ -11,7 +11,7 @@ import org.junit.Test;
     public class MainTest {
         @Test
         public void test(){
-            ColorDecorator colorDecorator = new ColorDecorator(new FengHuangBikeComponent());
-            System.out.println(colorDecorator.doBike());
+            SuperDecorator superDecorator = new PaintDecorator(new ColorDecorator(new FengHuangBikeComponent()));
+            System.out.println(superDecorator.doBike());
         }
     }
