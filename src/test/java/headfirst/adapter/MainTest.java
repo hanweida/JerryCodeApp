@@ -14,7 +14,7 @@ import org.junit.Test;
  * 2.对象适配
  * 3.接口适配
  *
- * 3种适配方式，1,2种类似
+ * 3种适配方式，1,2种 类似
  */
 public class MainTest {
     /**
