@@ -24,6 +24,14 @@
     </properties>
 
     <dependencies>
+        <!-- -->
+        <dependency>
+            <groupId>com.approvaltests</groupId>
+            <artifactId>approvaltests-parent</artifactId>
+            <version>3.2.0</version>
+            <type>pom</type>
+        </dependency>
+
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
