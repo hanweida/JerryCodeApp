@@ -12,9 +12,9 @@ public class InterruptedTest {
     Thread thread = new Thread(new Runnable() {
       @Override
       public void run() {
-        System.out.println("excute thread");
+        System.out.println("excute jdk.thread");
        // LockSupport.park();
-        System.out.println("after thread");
+        System.out.println("after jdk.thread");
       }
     });
 
