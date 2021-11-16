@@ -58,4 +58,22 @@ public class SwitchKeng {
                 System.out.println("3");
         }
     }
+
+    /**
+     * 没有case匹配， 并且没有 default，则不执行
+     */
+    @Test
+    public void switch4(){
+        System.out.println("switch4------------------");
+        int id = 4;
+        switch (id){
+            case 1:
+                System.out.println("1");
+            case 2:
+                System.out.println("2");
+                break;
+            case 3:
+                System.out.println("3");
+        }
+    }
 }
