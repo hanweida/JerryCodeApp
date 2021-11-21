@@ -1,10 +1,10 @@
 //将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。 
 //
-// 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下： 
+// 比如输入字符串为 "P;;ALISHIRING" 行数为 3 时，排列如下：
 //
 // 
 //P   A   H   N
-//A P L S I I G
+//i P L S I I G
 //Y   I   R 
 //
 // 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。 
@@ -26,7 +26,7 @@
 //
 // 
 //输入：s = "PAYPALISHIRING", numRows = 4
-//输出："PINALSIGYAHRPI"
+//输出："PINALSIGYAHRPI"PINAL IGYA IHRNPI
 //解释：
 //P     I    N
 //A   L S  I G
@@ -57,12 +57,52 @@ package algorithm.leetcode.editor.cn;
 public class ZigzagConversion {
     public static void main(String[] args) {
         Solution solution = new ZigzagConversion().new Solution();
+        String s = "PAYPALISHIRING";
+        System.out.println(solution.convert(s, 4));
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String convert(String s, int numRows) {
-            return "ZigzagConversion";
+
+            char[] ch = s.toCharArray();
+            int len = ch.length;
+            if(numRows == 1){
+                return s;
+            }
+            StringBuilder[] stringBuilders = new StringBuilder[numRows];
+            for(int i = 0; i < numRows; i++){
+                stringBuilders[i] = new StringBuilder();
+
+            }
+
+            int index = 0;
+            int rows = 0;
+
+            while (index < len) {
+                while (index < len && rows < numRows){
+                    stringBuilders[rows].append(ch[index++]);
+                    rows++;
+                }
+
+                if(index == len){
+                    break;
+                }
+
+                rows = numRows - 2;
+                while (index < len && rows >= 0){
+                    stringBuilders[rows].append(ch[index++]);
+                    rows--;
+                }
+                rows += 2;
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i = 0; i < stringBuilders.length; i++){
+                stringBuilder.append(stringBuilders[i]);
+            }
+
+            return stringBuilder.toString();
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
