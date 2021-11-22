@@ -54,35 +54,7 @@ public class ReverseInteger{
         //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int reverse(int x) {
-        int flag = 0;
-        if(x == 0){
-            return 0;
-        }
-        if(x < 0){
-            flag = 1;
-        }
-        String value = String.valueOf(x);
-        char[] ch = value.toCharArray();
-        int len = ch.length;
-        int index = 0;
-        StringBuilder stringBuilder = new StringBuilder();
-        if(flag == 1){
-            index = 1;
-            stringBuilder.append("-");
-        }
-
-        for (int i = len - 1; i >= index; i--){
-            if(ch[i] == '0' && i == len - 1){
-                continue;
-            } else {
-                stringBuilder.append(ch[i]);
-            }
-        }
-        try {
-            return Integer.parseInt(stringBuilder.toString());
-        } catch (Exception e){
-            return 0;
-        }
+        return 0;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
