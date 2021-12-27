@@ -2,6 +2,7 @@ package powermock;
 
 import com.powermock.InjectMockServiceImpl;
 import com.powermock.MockServiceBServiceImpl;
+import com.powermock.util.MockWhenNewUtil;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,10 +10,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.agent.PowerMockAgent;
 import org.powermock.modules.junit4.rule.PowerMockRule;
+import org.springframework.util.Assert;
 
 /**
  * @Description: 本类整理单测各种方法，将单测的各种情况都Mock到；争取做到通用Mock
@@ -107,6 +110,9 @@ public class PowerMockTest {
     @Rule
     public PowerMockRule rule = new PowerMockRule();
 
+    /**
+     * 在某些情况下，可能需要在运行测试之前手动启动代理
+     */
     static {
         PowerMockAgent.initializeIfNeeded();
     }
@@ -292,7 +298,19 @@ public class PowerMockTest {
      * Mock whennew MOCK的变量
      */
     @Test
-    public void test18() {
+    public void test18() throws Exception {
+        MockWhenNewUtil beforeMock = new MockWhenNewUtil();
+        System.out.println("-------beforeMock---------");
+        System.out.println(beforeMock.getMockWhenNew());
+        MockWhenNewUtil mockWhenNewUtil = PowerMockito.mock(MockWhenNewUtil.class);
+        PowerMockito.whenNew(MockWhenNewUtil.class).withAnyArguments().
+                thenReturn(mockWhenNewUtil);
+        PowerMockito.when(mockWhenNewUtil.getMockWhenNew()).thenReturn("mockWhenNew");
 
+        System.out.println("-------afterMock---------");
+        System.out.println(mockWhenNewUtil.getMockWhenNew());
+        System.out.println("-------afterMock injectMockService---------");
+        System.out.println(injectMockService.testWhennew());
+        Assert.isTrue("mockWhenNew".equals(injectMockService.testWhennew()));
     }
 }
