@@ -20,4 +20,14 @@ public class InjectMockServiceImpl extends InjectMockServiceImplParent{
     public String testParent() {
         return testParentMock();
     }
+
+    @Override
+    public String testStatic() {
+        return staticMethod();
+    }
+
+    static String staticMethod() {
+        return testStaticMock().getFileName();
+    }
+
 }

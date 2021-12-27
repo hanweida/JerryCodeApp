@@ -6,4 +6,6 @@ public interface InjectMockService {
     String testWhennew();
 
     String testParent();
+
+    String testStatic();
 }

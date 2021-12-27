@@ -2,6 +2,8 @@ package powermock;
 
 import com.powermock.InjectMockServiceImpl;
 import com.powermock.MockServiceBServiceImpl;
+import com.powermock.util.FileSystem;
+import com.powermock.util.HDFSFileSystemUtil;
 import com.powermock.util.MockWhenNewUtil;
 import org.junit.Before;
 import org.junit.Rule;
@@ -86,7 +88,7 @@ import java.lang.reflect.Method;
  */
 //@RunWith(PowerMockRunner.class)
 @PowerMockIgnore({"javax.management.*", "javax.net.ssl.*", "javax.swing.*"})
-@PrepareForTest(InjectMockServiceImpl.class)
+@PrepareForTest({InjectMockServiceImpl.class, HDFSFileSystemUtil.class})
 /**
  * 即为Mock初始化的监听器。它会查询这个测试用例的所有的成员变量。找到被标记为@Mock的变量，然后模拟出来。而后，又找到所有被标注为@Autowired的成员变量，判断变量类型是否是需要被Mock的。
  */
@@ -279,7 +281,11 @@ public class PowerMockTest {
      */
     @Test
     public void test15() {
-
+        FileSystem fileSystem = PowerMockito.mock(FileSystem.class);
+        PowerMockito.mockStatic(HDFSFileSystemUtil.class);
+        PowerMockito.when(HDFSFileSystemUtil.getHDFSFile()).thenReturn(fileSystem);
+        PowerMockito.when(fileSystem.getFileName()).thenReturn("testMockStaticParent");
+        Assert.isTrue("testMockStaticParent".equals(injectMockService.testStatic()));
     }
 
     /**
