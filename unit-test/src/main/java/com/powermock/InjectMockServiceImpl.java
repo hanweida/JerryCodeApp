@@ -2,7 +2,7 @@ package com.powermock;
 
 import com.powermock.util.MockWhenNewUtil;
 
-public class InjectMockServiceImpl implements InjectMockService{
+public class InjectMockServiceImpl extends InjectMockServiceImplParent{
     private MockServiceBService serviceB;
 
     @Override
@@ -16,5 +16,8 @@ public class InjectMockServiceImpl implements InjectMockService{
         return mock.getMockWhenNew();
     }
 
-
+    @Override
+    public String testParent() {
+        return testParentMock();
+    }
 }

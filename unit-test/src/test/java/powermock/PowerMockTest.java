@@ -18,6 +18,9 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.util.Assert;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+
 /**
  * @Description: 本类整理单测各种方法，将单测的各种情况都Mock到；争取做到通用Mock
  *
@@ -280,15 +283,26 @@ public class PowerMockTest {
     }
 
     /**
-     * Mock替换掉父类方法
+     * Mock 被测类替换掉父类方法
      */
     @Test
     public void test16() {
+        Method parentMethod = PowerMockito.method(InjectMockServiceImpl.class,
+                "testParentMock");
+        // 替换掉父类的方法
+        PowerMockito.replace(parentMethod).with(new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                return "child";
+            }
+        });
+
+        Assert.isTrue("child".equals(injectMockService.testParent()), "应该为子类");
 
     }
 
     /**
-     * Mock Connection等方法
+     * Mock DB Connection等方法
      */
     @Test
     public void test17() {
