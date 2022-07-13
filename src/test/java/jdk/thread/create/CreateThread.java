@@ -13,6 +13,47 @@ import java.util.concurrent.FutureTask;
  * Callback或者Future
  */
 public class CreateThread {
+    class Thread1 extends Thread {
+        @Override
+        public void run(){
+            int i = 0;
+            while (true) {
+                System.out.println("Say hello");
+                i++;
+                if (i == 10) {
+                    break;
+                }
+            }
+        }
+
+    }
+
+    // 继承Thread 实现run 方法
+    @Test
+    public void createThread1() throws InterruptedException {
+        Thread create1 = new Thread1();
+        create1.start();
+        create1.join();
+    }
+
+    // 实现Runnable 方法
+    @Test
+    public void createThread2() throws InterruptedException {
+        Thread create2 = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                int i = 0;
+                while (true) {
+                    System.out.println("Say hello2");
+                    i++;
+                    if (i == 10) {
+                        break;
+                    }
+                }
+            }
+        });
+        create2.start();
+    }
 
     class MyThread implements Callable {
 
