@@ -19,7 +19,7 @@ public class LockTest {
 
     @Test
     public void testUnsafe() {
-        CountDownLatch latch=new CountDownLatch(10000);
+        CountDownLatch latch=new CountDownLatch(10000);;
         for (int i = 0; i < 10000; i++) {
             Worker worker  = new Worker(latch);
             worker.start();
